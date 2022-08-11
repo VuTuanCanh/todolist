@@ -29,6 +29,7 @@ function TodolistFeature() {
     ];
 
     const [todolist, setTodolist] = useState(initTodolist);
+    const [filterStatus, setFilterStatus] = useState('all');
 
 
     const handleTodoClicked = (index) => {
@@ -42,9 +43,13 @@ function TodolistFeature() {
 
 
     const handleAddTodo = (value) => {
+        if (value.todo === '') {
+            return;
+        }
         setTodolist((prevTodo) => {
             return [...prevTodo, value];
         })
+
     }
 
 
@@ -55,9 +60,14 @@ function TodolistFeature() {
     }
 
 
+    const renderTodolist = todolist.filter((todo) => {
+        return filterStatus === 'all' || filterStatus === todo.status;
+    })
+
+
     return (
         <div>
-            <Todolist todos={todolist} todoClick={handleTodoClicked} addTodo={handleAddTodo} deleteTodo={handleDeleteTodo} />
+            <Todolist todos={renderTodolist} todoClick={handleTodoClicked} addTodo={handleAddTodo} deleteTodo={handleDeleteTodo} filterTodo={setFilterStatus} />
         </div>
     )
 }

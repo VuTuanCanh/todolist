@@ -1,0 +1,16 @@
+.filterTodo {
+    text-align: right;
+    margin: 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    .btnShow {
+        color: #ffff;
+        margin-left: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        background: rgb(61, 233, 224);
+        border-radius: 5px;
+        border: none;
+        font-weight: 600;
+    }
+}

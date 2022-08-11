@@ -1,14 +1,18 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useState } from 'react';
-import './styles.scss';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import FilterTodo from '../FilterTodo';
+import './styles.scss';
 
 
 function Todolist(props) {
-    const { todos, todoClick, addTodo, deleteTodo } = props;
-    const [inputValue, setInputValue] = useState('');
+    const { todos, todoClick, addTodo, deleteTodo, filterTodo } = props;
+    const [inputValue, setInputValue] = useState({
+        id: uuidv4(),
+        todo: '',
+        status: 'new',
+    });
 
 
     const handleTodoClick = (index) => {
@@ -23,6 +27,7 @@ function Todolist(props) {
 
     const handleAdd = () => {
         addTodo(inputValue);
+        setInputValue({ id: uuidv4(), todo: '', status: 'new' });
     }
 
     const handleDelete = (index) => {
@@ -43,6 +48,7 @@ function Todolist(props) {
                         onClick={handleAdd}
                     >Add</button>
                 </div>
+                <FilterTodo filterTodoo={filterTodo} />
                 <div className="list">
                     <ul>
                         {
@@ -75,6 +81,7 @@ Todolist.propTypes = {
     todoClick: PropTypes.func,
     addTodo: PropTypes.func,
     deleteTodo: PropTypes.func,
+    filterTodo: PropTypes.func,
 }
 
 Todolist.defaultProps = {
@@ -82,6 +89,7 @@ Todolist.defaultProps = {
     todoClick: () => { },
     addTodo: () => { },
     deleteTodo: () => { },
+    filterTodo: () => { },
 }
 
 

@@ -4,7 +4,8 @@
     .todolist {
         border: 1px solid #ddd;
         padding: 30px;
-        border-radius: 5px;
+        border-radius: 10px;
+        box-shadow: 5px 5px rgb(245, 101, 245), 10px 10px rgb(255, 255, 98), 15px 15px rgb(24, 223, 163);
         h1 {
             font-size: 35px;
             color: #0bdf40;
@@ -26,6 +27,7 @@
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
+                font-weight: 600;
                 &:hover {
                     background: #09a730;
                 }
@@ -39,6 +41,7 @@
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: 10px;
+                    word-wrap: break-word;
                     li {
                         cursor: pointer;
                     }
