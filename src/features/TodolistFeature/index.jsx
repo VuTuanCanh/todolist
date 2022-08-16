@@ -49,7 +49,6 @@ function TodolistFeature() {
         setTodolist((prevTodo) => {
             return [...prevTodo, value];
         })
-
     }
 
 
@@ -64,10 +63,14 @@ function TodolistFeature() {
         return filterStatus === 'all' || filterStatus === todo.status;
     })
 
+    // localStorage save pending...
+    localStorage.setItem('todos', JSON.stringify(renderTodolist));
+    const renderLocalStorage = JSON.parse(localStorage.getItem('todos'));
+
 
     return (
         <div>
-            <Todolist todos={renderTodolist} todoClick={handleTodoClicked} addTodo={handleAddTodo} deleteTodo={handleDeleteTodo} filterTodo={setFilterStatus} />
+            <Todolist todos={renderLocalStorage} todoClick={handleTodoClicked} addTodo={handleAddTodo} deleteTodo={handleDeleteTodo} filterTodo={setFilterStatus} />
         </div>
     )
 }
