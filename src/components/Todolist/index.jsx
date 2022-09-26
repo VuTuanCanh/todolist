@@ -41,6 +41,7 @@ function Todolist(props) {
                 <div className="inputAdd">
                     <input
                         type="text"
+                        value={inputValue.todo}
                         onChange={(e) => handleInputChange(e.target.value)}
                     />
                     <button
